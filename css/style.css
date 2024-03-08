@@ -1,0 +1,233 @@
+
+
+/* common */
+*{} 
+body {
+  background: #000;
+}
+.siri-wrap{width: 200px; height: 200px; position: absolute; border-radius: 50%; overflow: hidden;
+  font-size: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring-con{display: none;}
+.ring-01{position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform: scale(1);  transform-origin: 50% 50%;  mix-blend-mode:hard-light; display: flex; align-items: center; justify-content: center;}
+.ring-01 circle{filter: blur(5px); opacity: 1; z-index: 1;}
+.ring-02{position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform: scale(1);  transform-origin: 50% 50%;  mix-blend-mode:hard-light; display: flex; align-items: center; justify-content: center;}
+.ring-02 circle{filter: blur(2px); opacity: 1; z-index: 10;}
+.ring-03{position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform: scale(1);  transform-origin: 50% 50%;  mix-blend-mode:hard-light; display: flex; align-items: center; justify-content: center;}
+.ring-03 circle{filter: blur(2px); opacity: 1; z-index: 20;}
+
+.rainbow-container {
+  z-index: 1;
+  transform: rotate(0deg) translateZ(0);
+  transform-origin: center center;
+  width: 100%;
+  height: 100%;
+  border: 0px solid rgba(255, 255, 255, 0.4);
+  -webkit-animation: rainbow 5s infinite linear;
+  border-radius: 50%;
+  box-shadow:inset 0.03em 0 0.1em 0.02em #220C4A;
+  transform-style: preserve-3d;
+  perspective: 1em;
+}
+.bottom-line{
+  z-index: 20;
+  transform: rotate(0deg) translateZ(0);
+  transform-origin: center center;
+  width: 100%;
+  height: 100%;
+  border-bottom:  4px solid rgba(131, 66, 122, 0.8);
+  border-radius: 50%;
+  box-shadow:inset 0.01em 0.07em 0.04em 0.01em #fff;
+  position: absolute; left: 0; top: 0;
+  transform: rotate(195deg) translateZ(0);
+  opacity: 0.8;
+}
+@keyframes rainbow {
+  0% {
+    transform: rotate(0deg) translateZ(0);
+    box-shadow: inset 0.03em 0 0.1em 0.02em #7C2DA8;
+  }
+  25% {
+    transform: rotate(90deg) translateZ(0);
+    box-shadow:inset 0.03em 0 0.1em 0.02em #5F29A2;
+  }
+  50% {
+    transform: rotate(180deg) translateZ(0);
+    box-shadow:inset 0.03em 0 0.1em 0.02em #7E2DE1;
+  }
+  75% {
+    transform: rotate(270deg) translateZ(0);
+    box-shadow:inset 0.03em 0 0.1em 0.02em #5F29A2;
+  }
+  100% {
+    transform: rotate(360deg) translateZ(0);
+    box-shadow:inset 0.03em 0 0.1em 0.02em #7C2DA8;
+  }
+}
+.palette-1 {
+  --blob-1: #F34CFB;
+  --blob-2: #3E37FF;
+  --blob-3: #367BCF;
+  --blob-4: #37FF63;
+}
+.container {
+  position: absolute; z-index: 10;
+  left: 0; top: 0;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  transition: background 1000ms ease;
+
+}
+.container::after {
+  position: absolute;
+  content: "";
+  width: min(50vw, 50vh);
+  height: min(50vw, 50vh);
+  background: transparent;
+  border-radius: 50%;
+  filter: blur(10rem);
+  transition: background 500ms ease;
+}
+.blobs {
+  
+  height: 100%;
+  width: 100%;
+}
+.blobs svg {
+  position: relative;
+  height: 100%;
+  z-index: 2;
+}
+.blobs .blob {
+  animation: rotate 15s infinite alternate ease-in-out;
+  transform-origin: 50% 50%;
+  opacity: 0.6;mix-blend-mode:hard-light;
+}
+.blobs .blob path {
+  animation: blob-anim-1 5s infinite alternate cubic-bezier(0.45, 0.2, 0.55, 0.8);
+  transform-origin: 50% 50%;
+  transform: scale(1.1);
+  transition: fill 800ms ease;
+}
+.blobs .blob.alt {
+  animation-direction: alternate-reverse;
+  opacity: 0.3;
+}
+.blobs .blob-1 path {
+  fill: var(--blob-1);
+  filter: blur(1rem);
+}
+.blobs .blob-2 {
+  animation-duration: 18s;
+  animation-direction: alternate-reverse;
+}
+.blobs .blob-2 path {
+  fill: var(--blob-2);
+  animation-name: blob-anim-2;
+  animation-duration: 7s;
+  filter: blur(0.75rem);
+  transform: scale(0.78);
+}
+.blobs .blob-2.alt {
+  animation-direction: alternate;
+}
+.blobs .blob-3 {
+  animation-duration: 23s;
+}
+.blobs .blob-3 path {
+  fill: var(--blob-3);
+  animation-name: blob-anim-3;
+  animation-duration: 6s;
+  filter: blur(1rem);
+  transform: scale(0.9);
+}
+.blobs .blob-4 {
+  animation-duration: 10s;
+  animation-direction: alternate-reverse;
+  opacity: 0.9;
+}
+.blobs .blob-4 path {
+  fill: var(--blob-4);
+  animation-name: blob-anim-4;
+  animation-duration: 10s;
+  filter: blur(5rem);
+  transform: scale(0.5);
+}
+.blobs .blob-4.alt {
+  animation-direction: alternate;
+  opacity: 0.9;
+}
+@keyframes blob-anim-1 {
+  0% {
+    d: path("M 100 600 q 0 -500, 500 -500 t 500 500 t -500 500 T 100 600 z");
+  }
+  30% {
+    d: path("M 100 600 q -50 -400, 500 -500 t 450 550 t -500 500 T 100 600 z");
+  }
+  70% {
+    d: path("M 100 600 q 0 -400, 500 -500 t 400 500 t -500 500 T 100 600 z");
+  }
+  100% {
+    d: path("M 150 600 q 0 -600, 500 -500 t 500 550 t -500 500 T 150 600 z");
+  }
+}
+@keyframes blob-anim-2 {
+  0% {
+    d: path("M 100 600 q 0 -400, 500 -500 t 400 500 t -500 500 T 100 600 z");
+  }
+  40% {
+    d: path("M 150 600 q 0 -600, 500 -500 t 500 550 t -500 500 T 150 600 z");
+  }
+  80% {
+    d: path("M 100 600 q -50 -400, 500 -500 t 450 550 t -500 500 T 100 600 z");
+  }
+  100% {
+    d: path("M 100 600 q 100 -600, 500 -500 t 400 500 t -500 500 T 100 600 z");
+  }
+}
+@keyframes blob-anim-3 {
+  0% {
+    d: path("M 100 600 q -50 -400, 500 -500 t 450 550 t -500 500 T 100 600 z");
+  }
+  35% {
+    d: path("M 150 600 q 0 -600, 500 -500 t 500 550 t -500 500 T 150 600 z");
+  }
+  75% {
+    d: path("M 100 600 q 100 -600, 500 -500 t 400 500 t -500 500 T 100 600 z");
+  }
+  100% {
+    d: path("M 100 600 q 0 -400, 500 -500 t 400 500 t -500 500 T 100 600 z");
+  }
+}
+@keyframes blob-anim-4 {
+  0% {
+    d: path("M 150 600 q 0 -600, 500 -500 t 500 550 t -500 500 T 150 600 z");
+  }
+  30% {
+    d: path("M 100 600 q 100 -600, 500 -500 t 400 500 t -500 500 T 100 600 z");
+  }
+  70% {
+    d: path("M 100 600 q -50 -400, 500 -500 t 450 550 t -500 500 T 100 600 z");
+  }
+  100% {
+    d: path("M 150 600 q 0 -600, 500 -500 t 500 550 t -500 500 T 150 600 z");
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
