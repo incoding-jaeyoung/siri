@@ -3,7 +3,7 @@
 /* common */
 *{} 
 body {
-  background: #000;
+  background: #fff;
 }
 .siri-wrap{width: 200px; height: 200px; position: absolute; border-radius: 50%; overflow: hidden;
   font-size: 150px;
